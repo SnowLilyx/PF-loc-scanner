@@ -1,8 +1,7 @@
 import os
 
-GAME_FILES_PATH = "C:/Program Files (x86)/Steam/steamapps/common/Europa Universalis IV"
-MOD_FILES_PATH = "C:/Users/Lily/Documents/Paradox Interactive/Europa Universalis IV/mod/PostFinem_PreRelease"
-LOC = "/localisation"
+GAME_FILES_PATH = "C:/Program Files (x86)/Steam/steamapps/common/Europa Universalis IV/localisation"
+MOD_FILES_PATH = "C:/Users/Lily/Documents/Paradox Interactive/Europa Universalis IV/mod/PostFinem_PreRelease/localisation/replace"
 ENGLISH = "_l_english.yml"
 
 def process_file(lines):
@@ -20,7 +19,7 @@ def process_file(lines):
     return loc_map
 
 def collect_loc_map(path):
-    os.chdir(path+LOC)
+    os.chdir(path)
     files = os.listdir()
     files = [f for f in files if f[-14:] == ENGLISH] # Filter for english files only
     
@@ -33,8 +32,9 @@ def collect_loc_map(path):
 
     return complete_loc_map
 
-d = collect_loc_map(GAME_FILES_PATH)
-
-print(d["flavor_iro.3.t"])
-print(d["ABANDON_CORE_COST"])
-print(d["fra_crown_naples_desc"])
+game_files = collect_loc_map(GAME_FILES_PATH)
+mod_files = collect_loc_map(MOD_FILES_PATH)
+print(game_files["CRUSADEONUS_6"])
+print(mod_files["CRUSADEONUS_6"])
+print(game_files["papal_legate"])
+print(mod_files["papal_legate"])
