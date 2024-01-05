@@ -40,4 +40,5 @@ for k, v in game_files.items():
         try:
             _ = mod_files[k]
         except:
-            print(f'{k}: "{v}"')
+            if "THRESHOLD" not in v:
+                print(f'{k}: "{v}"\n')
