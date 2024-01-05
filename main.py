@@ -5,10 +5,6 @@ MOD_FILES_PATH = "C:/Users/Lily/Documents/Paradox Interactive/Europa Universalis
 LOC = "/localisation"
 ENGLISH = "_l_english.yml"
 
-os.chdir(GAME_FILES_PATH+LOC)
-files = os.listdir()
-files = [f for f in files if f[-14:] == ENGLISH] # Filter for english files only
-
 def process_file(lines):
     """ Take the lines of a file and process them into a dictionary. """
     loc_map = {}
@@ -23,19 +19,22 @@ def process_file(lines):
         loc_map[key] = loc
     return loc_map
 
-with open(files[0], encoding="UTF-8-sig") as f:
-    lines = f.readlines()
-
-def main():
+def collect_loc_map(path):
+    os.chdir(path+LOC)
+    files = os.listdir()
+    files = [f for f in files if f[-14:] == ENGLISH] # Filter for english files only
+    
     complete_loc_map = {}
     for file in files:
         with open(file, encoding="UTF-8-sig") as f:
             lines = f.readlines()
-        d = process_file(lines)
-        complete_loc_map.update(d)
+        file_loc_map = process_file(lines)
+        complete_loc_map.update(file_loc_map)
 
-    print(complete_loc_map["flavor_iro.3.t"])
-    print(complete_loc_map["ABANDON_CORE_COST"])
-    print(complete_loc_map["fra_crown_naples_desc"])
+    return complete_loc_map
 
-main()
+d = collect_loc_map(GAME_FILES_PATH)
+
+print(d["flavor_iro.3.t"])
+print(d["ABANDON_CORE_COST"])
+print(d["fra_crown_naples_desc"])
