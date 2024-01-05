@@ -37,4 +37,7 @@ mod_files = collect_loc_map(MOD_FILES_PATH)
 
 for k, v in game_files.items():
     if "HRE" in v:
-        print(f'{k}: "{v}"')
+        try:
+            _ = mod_files[k]
+        except:
+            print(f'{k}: "{v}"')
