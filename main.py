@@ -17,12 +17,15 @@ def process_file(lines):
         if line == "l_english:" or line[0] == "#":
             continue
 
-        key, line = line.split(":")
-        loc = line.split('"')[1]
+        key, *rest = line.split(":") # Cut key by first :
+        _, *loc = ":".join(rest).split('"') # Cut loc string by first "
+        loc = '"'.join(loc)[:-1] # Remove last "
         loc_map[key] = loc
     return loc_map
 
 with open(files[0], encoding="UTF-8-sig") as f:
     lines = f.readlines()
 
-print(process_file(lines))
+d = process_file(lines)
+print(d["PROV4818"])
+print(d["flavor_iro.3.t"])
