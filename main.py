@@ -34,7 +34,7 @@ def collect_loc_map(path):
 
 game_files = collect_loc_map(GAME_FILES_PATH)
 mod_files = collect_loc_map(MOD_FILES_PATH)
-print(game_files["CRUSADEONUS_6"])
-print(mod_files["CRUSADEONUS_6"])
-print(game_files["papal_legate"])
-print(mod_files["papal_legate"])
+
+for k, v in game_files.items():
+    if "HRE" in v:
+        print(f'{k}: "{v}"')
