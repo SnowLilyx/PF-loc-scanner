@@ -36,9 +36,8 @@ game_files = collect_loc_map(GAME_FILES_PATH)
 mod_files = collect_loc_map(MOD_FILES_PATH)
 
 for k, v in game_files.items():
-    if "HRE" in v:
+    if "Holy Roman Empire" in v:
         try:
             _ = mod_files[k]
         except:
-            if "THRESHOLD" not in v:
-                print(f'{k}: "{v}"\n')
+            print(f'{k}: "{v}"\n')
