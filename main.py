@@ -26,6 +26,16 @@ def process_file(lines):
 with open(files[0], encoding="UTF-8-sig") as f:
     lines = f.readlines()
 
-d = process_file(lines)
-print(d["PROV4818"])
-print(d["flavor_iro.3.t"])
+def main():
+    complete_loc_map = {}
+    for file in files:
+        with open(file, encoding="UTF-8-sig") as f:
+            lines = f.readlines()
+        d = process_file(lines)
+        complete_loc_map.update(d)
+
+    print(complete_loc_map["flavor_iro.3.t"])
+    print(complete_loc_map["ABANDON_CORE_COST"])
+    print(complete_loc_map["fra_crown_naples_desc"])
+
+main()
