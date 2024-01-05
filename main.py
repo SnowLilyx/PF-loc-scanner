@@ -14,7 +14,7 @@ def process_file(lines):
     loc_map = {}
     for line in lines:
         line = line.strip()
-        if line == "l_english:" or line[0] == "#":
+        if not line or line == "l_english:" or line[0] == "#":
             continue
 
         key, *rest = line.split(":") # Cut key by first :
