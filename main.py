@@ -3,6 +3,7 @@ import os
 GAME_FILES_PATH = "C:/Program Files (x86)/Steam/steamapps/common/Europa Universalis IV/localisation"
 MOD_FILES_PATH = "C:/Users/Lily/Documents/Paradox Interactive/Europa Universalis IV/mod/PostFinem_PreRelease/localisation/replace"
 ENGLISH = "_l_english.yml"
+KEYWORD = "Imperial"
 
 def process_file(lines):
     """ Take the lines of a file and process them into a dictionary. """
@@ -36,7 +37,7 @@ game_files = collect_loc_map(GAME_FILES_PATH)
 mod_files = collect_loc_map(MOD_FILES_PATH)
 
 for k, v in game_files.items():
-    if "Holy Roman Empire" in v:
+    if KEYWORD in v:
         try:
             _ = mod_files[k]
         except:
