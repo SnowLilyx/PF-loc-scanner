@@ -7,7 +7,7 @@ LOC = "/localisation"
 os.chdir(GAME_FILES_PATH+LOC)
 files = os.listdir()
 
-with open(files[0], encoding="UTF-8") as f:
+with open(files[0], encoding="UTF-8-sig") as f:
     lines = f.readlines()
 
 print(lines[:10])
